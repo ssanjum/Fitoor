@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_main"
+        android:orientation="vertical"
+        android:padding="36dp"
+        tools:context="com.example.sanjum.currencyexchange.activity.Fitoor">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="FITOOR WORLD"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnFactorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12sp"
+            android:background="@drawable/btn_gradient"
+            android:text="Factorial" />
+
+        <Button
+            android:id="@+id/btnPalindrome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_gradient"
+            android:text="palindrome" />
+
+        <Button
+            android:id="@+id/btnArmStrng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@drawable/btn_gradient"
+            android:text="armstrong" />
+
+        <Button
+            android:id="@+id/btnFibbonacci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_gradient"
+            android:text="fibbonacci" />
+
+
+    </LinearLayout>
+</LinearLayout>
+
