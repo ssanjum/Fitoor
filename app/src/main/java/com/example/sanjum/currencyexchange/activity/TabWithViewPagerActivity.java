@@ -17,27 +17,32 @@ public class TabWithViewPagerActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private PagerAdapter adapter;
     private Bundle bundle;
+    private int res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_with_view_pager);
         bundle = getIntent().getExtras();
-        int res = bundle.getInt("PAL");
+        res = bundle.getInt("KEY");
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pager = findViewById(R.id.viewpager);
-        setUpViewPager(pager);
+        setUpViewPager(pager, res);
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(pager);
     }
 
-    private void setUpViewPager(ViewPager pager) {
-
+    private void setUpViewPager(ViewPager pager, int value) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("INTKEY", value);
+        FunctionalityFragment functionalityFragment = new FunctionalityFragment();
+        CodeFragment codeFragment = new CodeFragment();
+        functionalityFragment.setArguments(bundle);
         adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FunctionalityFragment(), "Functionality");
-        adapter.addFragment(new CodeFragment(), "Code");
+        adapter.addFragment(functionalityFragment, "Functionality");
+        adapter.addFragment(codeFragment, "Code");
         pager.setAdapter(adapter);
     }
 }

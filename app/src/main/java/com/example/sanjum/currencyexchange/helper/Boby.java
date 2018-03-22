@@ -6,8 +6,7 @@ package com.example.sanjum.currencyexchange.helper;
 
 public class Boby {
 
-    public boolean isPalindromeNumber(int num) {
-        boolean isPalindrome = false;
+    public String isPalindromeNumber(int num) {
         int r, sum = 0, temp;
         temp = num;
         while (num > 0) {
@@ -17,11 +16,36 @@ public class Boby {
             num = num / 10;
         }
         if (temp == sum) {
-            isPalindrome = true;
-            System.out.println("palindrome number ");
+            return temp + "  is palindrom";
         } else {
-            System.out.println(" Not palindrome number ");
+            return temp + " is Not a  palindrom number";
         }
-        return isPalindrome;
+
+    }
+
+    public int findFactorial(int num) {
+        int fact = 1;
+        for (int i = 1; i <= num; i++) {
+            fact = fact * i;
+        }
+        return fact;
+    }
+
+    public int[] bubbleSort(int[] arr) {
+        int length = arr.length;
+        int temp;
+        for (int i = 0; i < length; i++) {
+
+            for (int j = 0; j < length - i - 2; j++) {
+
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        return arr;
     }
 }

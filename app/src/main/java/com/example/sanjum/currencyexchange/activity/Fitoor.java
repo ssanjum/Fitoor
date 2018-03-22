@@ -10,9 +10,9 @@ import com.example.sanjum.currencyexchange.R;
 
 public class Fitoor extends AppCompatActivity implements View.OnClickListener {
     private Button btnfact, btnpalin, btnarm, btnfibbonacci;
-    public static final int ARMSTRONG = 0;
+    public static final int ARM = 0;
     public static final int FACT = 1;
-    public static final int FIBBO = 2;
+    public static final int BUBBLE = 2;
     public static final int PALINDROME = 3;
 
 
@@ -22,7 +22,7 @@ public class Fitoor extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_fitoor);
         btnarm = findViewById(R.id.btnArmStrng);
         btnfact = findViewById(R.id.btnFactorial);
-        btnfibbonacci = findViewById(R.id.btnFibbonacci);
+        btnfibbonacci = findViewById(R.id.btnBubbleSort);
         btnpalin = findViewById(R.id.btnPalindrome);
         btnpalin.setOnClickListener(this);
         btnarm.setOnClickListener(this);
@@ -36,22 +36,22 @@ public class Fitoor extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btnArmStrng:
                 Intent intent = new Intent(this, TabWithViewPagerActivity.class);
-                intent.putExtra("ARM", ARMSTRONG);
+                intent.putExtra("KEY", ARM);
                 startActivity(intent);
                 break;
             case R.id.btnFactorial:
                 Intent intent1 = new Intent(this, TabWithViewPagerActivity.class);
-                intent1.putExtra("FAC", FACT);
+                intent1.putExtra("KEY", FACT);
                 startActivity(intent1);
                 break;
-            case R.id.btnFibbonacci:
+            case R.id.btnBubbleSort:
                 Intent intent2 = new Intent(this, TabWithViewPagerActivity.class);
-                intent2.putExtra("FIB", FIBBO);
+                intent2.putExtra("KEY", BUBBLE);
                 startActivity(intent2);
                 break;
             case R.id.btnPalindrome:
                 Intent intent3 = new Intent(this, TabWithViewPagerActivity.class);
-                intent3.putExtra("PAL", PALINDROME);
+                intent3.putExtra("KEY", PALINDROME);
                 startActivity(intent3);
                 break;
         }
