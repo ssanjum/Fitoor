@@ -1,0 +1,16 @@
+ public String isArmStrong(int number) {
+        int sum = 0,temp;
+        temp=number;
+        int lastdigit;
+        while (number > 0) {
+            lastdigit = number%10;
+            lastdigit = lastdigit * lastdigit * lastdigit;
+            sum = sum + lastdigit;
+            number = number/10;
+        }
+        if (sum == temp) {
+            return temp + " is " + " ArmStrong";
+        } else {
+            return temp + " is " + " not a ArmStrong number";
+        }
+    }

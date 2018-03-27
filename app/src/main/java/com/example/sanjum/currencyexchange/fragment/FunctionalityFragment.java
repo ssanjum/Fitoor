@@ -1,15 +1,17 @@
 package com.example.sanjum.currencyexchange.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sanjum.currencyexchange.R;
 import com.example.sanjum.currencyexchange.helper.Boby;
@@ -22,14 +24,14 @@ public class FunctionalityFragment extends Fragment implements View.OnClickListe
     private EditText editText;
     private TextView textView, tvStatus;
     private Button button;
-    Boby boby;
-    private int res;
+    private Boby boby;
+    private String resultCode;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            res = getArguments().getInt("INTKEY");
+            resultCode = getArguments().getString("INTKEY");
         }
     }
 
@@ -43,61 +45,67 @@ public class FunctionalityFragment extends Fragment implements View.OnClickListe
         tvStatus = view.findViewById(R.id.tv_frag_status);
         button.setOnClickListener(this);
         boby = new Boby();
-        updateStaus(res);
+        updateStaus(resultCode);
         return view;
     }
 
 
     @Override
     public void onClick(View v) {
-        String[] demo = new String[0];
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        String result;
         int number = 0;
-        if (res == 2) {
-            String getValue = editText.getText().toString();
-            demo = getValue.split(" ");
-            Toast.makeText(getActivity(), "" + demo[0], Toast.LENGTH_SHORT).show();
-        } else {
-            number = Integer.parseInt(editText.getText().toString());
-        }
         editText.setText("");
         textView.setVisibility(View.VISIBLE);
+        // String[] demo = new String[0];
+        // int[] arr = new int[0];
+       /* if (resultCode == 2 || resultCode == 4) {
+            String getValue = editText.getText().toString();
+            demo = getValue.split(",");
+            arr = new int[demo.length];
+            for (int i = 0; i < demo.length; i++) {
+                arr[i] = Integer.parseInt(demo[i]);
+            }
+        } else {
+            if (TextUtils.isEmpty(editText.getText().toString())) {
+                editText.setError("Please Enter Integer");
+            } else {
+                number = Integer.parseInt(editText.getText().toString());
+            }
+
+        }*/
         switch (v.getId()) {
             case R.id.btn_frag_result:
-                switch (res) {
-                    case 0:
+                switch (resultCode) {
+                    case "arm":
+                        result = boby.isArmStrong(number);
+                        textView.setText(result);
                         break;
-                    case 1:
-                        int result = boby.findFactorial(number);
+                    case "fact":
+                        result = String.valueOf(boby.findFactorial(number));
                         textView.setText("" + result);
                         break;
-                    case 2:
-                        //int[] sortedArray = boby.bubbleSort(demo)
+                    case "palindrom":
+                        result = boby.isPalindromeNumber(number);
+                        textView.setText(result);
                         break;
-                    case 3:
-                        String palindrmeResult = boby.isPalindromeNumber(number);
-                        textView.setText(palindrmeResult);
-                        break;
-
                 }
 
         }
 
     }
 
-    private void updateStaus(int res) {
+    private void updateStaus(String res) {
         switch (res) {
-            case 0:
+            case "arm":
                 tvStatus.setText("ArmStrong");
                 break;
-            case 1:
+            case "fact":
                 tvStatus.setText("Factorial");
                 break;
-            case 2:
-                tvStatus.setText("Fibbonacci");
-                break;
-            case 3:
-                tvStatus.setText("Palindrome");
-                break;
+            case "palindrom":
+
         }
     }
 }

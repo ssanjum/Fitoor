@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_main"
+    android:background="@drawable/gradient_code_fragment"
     android:orientation="vertical"
     android:padding="26sp">
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Number"
-         />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/btn_frag_result"

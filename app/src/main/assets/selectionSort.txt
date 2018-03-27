@@ -1,0 +1,16 @@
+public int[] selectionSort(int[] arr) {
+        int[] jabbu={6,4,7,2,5};
+        int length = arr.length;
+        for (int i = 0; i < length; i++) {
+            int min_index = i;
+            for (int j = 0; j < length - 2; j++) {
+                if (arr[min_index] > arr[j + 1]) {
+                    min_index = j+1;
+                }
+            }
+            int small = arr[min_index];
+            arr[min_index] = arr[i];
+            arr[i] = small;
+        }
+        return arr;
+    }

@@ -55,6 +55,13 @@
             android:background="@drawable/btn_gradient"
             android:text="Bubble Sort" />
 
+        <Button
+            android:id="@+id/btnSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:background="@drawable/btn_gradient"
+            android:text="SelectionSort" />
 
     </LinearLayout>
 </LinearLayout>
